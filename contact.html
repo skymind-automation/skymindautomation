@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Skymind Automation</title>
+<meta name="description" content="Book a free automation audit with Skymind Automation. Tell us about your business and we'll show you what's worth automating.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%235b7cff%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22sans-serif%22 font-weight=%22bold%22>S</text></svg>">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">S</span>
+      Skymind <span style="color:var(--text-dim); font-weight:500;">Automation</span>
+    </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta"><a href="contact.html" class="btn btn-primary btn-sm">Book a Call</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="contact.html" class="btn btn-outline btn-sm">Book a Call</a>
+      <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero container">
+    <div class="eyebrow"><span class="dot"></span> Contact</div>
+    <h1>Let's find what's worth <span class="gradient-text">automating</span></h1>
+    <p>Tell us a bit about your business. We'll follow up within one business day to schedule your free automation audit.</p>
+  </section>
+
+  <section class="pad container">
+    <div class="grid grid-2" style="gap:56px; align-items:flex-start;">
+
+      <!-- FORM -->
+      <div class="card reveal">
+        <form id="contact-form">
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Full name *</label>
+              <input type="text" id="name" name="name" placeholder="Jordan Smith" required>
+            </div>
+            <div class="field">
+              <label for="email">Work email *</label>
+              <input type="email" id="email" name="email" placeholder="jordan@company.com" required>
+            </div>
+            <div class="field">
+              <label for="company">Company name</label>
+              <input type="text" id="company" name="company" placeholder="Acme Inc.">
+            </div>
+            <div class="field">
+              <label for="phone">Phone (optional)</label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+            </div>
+            <div class="field full">
+              <label for="interest">What are you interested in?</label>
+              <select id="interest" name="interest">
+                <option>Not sure — send me the free audit</option>
+                <option>AI Chatbots &amp; Virtual Assistants</option>
+                <option>Workflow Automation</option>
+                <option>Custom AI Agents</option>
+                <option>Data &amp; Systems Integration</option>
+                <option>Reporting &amp; Dashboards</option>
+                <option>AI Strategy &amp; Consulting</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="message">Tell us about your business *</label>
+              <textarea id="message" name="message" placeholder="What's taking up too much manual time right now?" required></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top:24px;">Request Free Audit</button>
+          <p class="form-note">We'll never share your information. By submitting, you agree to be contacted about your request.</p>
+        </form>
+
+        <div id="form-success" class="form-success">
+          <div class="check">✓</div>
+          <h3>Thanks — message received!</h3>
+          <p style="color:var(--text-muted); margin-top:10px;">We'll get back to you within one business day to schedule your free automation audit.</p>
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div class="reveal">
+        <div class="contact-info-card">
+          <div class="icon-box" style="margin-bottom:0;">✉️</div>
+          <div>
+            <h3>Email</h3>
+            <a href="mailto:skymindautomation@gmail.com">skymindautomation@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="icon-box" style="margin-bottom:0;">💬</div>
+          <div>
+            <h3>Response time</h3>
+            <p>Within 1 business day, Monday–Friday</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="icon-box" style="margin-bottom:0;">🌍</div>
+          <div>
+            <h3>Where we work</h3>
+            <p>Fully remote — we work with clients across North America and beyond</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="icon-box" style="margin-bottom:0;">📅</div>
+          <div>
+            <h3>Prefer to talk live?</h3>
+            <p>Mention it in your message and we'll send a scheduling link for a free 30-minute call.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="pad container">
+    <div class="section-head center reveal">
+      <div class="eyebrow"><span class="dot"></span> FAQ</div>
+      <h2>Common questions</h2>
+    </div>
+    <div class="faq-list" style="max-width:760px; margin:0 auto;">
+      <div class="faq-item reveal">
+        <button class="faq-question">How much does automation typically cost? <span class="plus">+</span></button>
+        <div class="faq-answer"><p>It depends on scope — a single workflow can start around $1,500, while multi-workflow builds with a custom AI agent typically range from $4,500 up. You'll get a fixed-scope quote after your free audit, so there are no surprises.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">How long does a typical project take? <span class="plus">+</span></button>
+        <div class="faq-answer"><p>Most single-workflow projects launch within 1–3 weeks. Larger builds involving custom AI agents or multiple integrations typically take 4–8 weeks depending on complexity.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">Do we need technical staff on our end? <span class="plus">+</span></button>
+        <div class="faq-answer"><p>No. We handle the technical build end-to-end and train your team on how to use and monitor the finished system. You just need admin access to the tools involved.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">What tools do you work with? <span class="plus">+</span></button>
+        <div class="faq-answer"><p>We're platform-agnostic — commonly working with n8n, Zapier, Make, most major CRMs, Google Workspace, Slack, and leading AI models like Claude and GPT. If you use something niche, we'll assess compatibility during your audit.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">What happens after launch? <span class="plus">+</span></button>
+        <div class="faq-answer"><p>Every project includes a post-launch support window. After that, most clients opt into a monthly support plan so we can monitor, maintain, and extend the system as their business evolves.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">Is our data secure? <span class="plus">+</span></button>
+        <div class="faq-answer"><p>Yes. We use secure, access-controlled connections to your systems, never store more data than necessary, and are happy to sign an NDA or DPA before we begin work.</p></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-mark">S</span> Skymind Automation</a>
+        <p>We design and build AI-powered automation systems that give growing businesses back their time.</p>
+        <div class="social-row">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Twitter / X">𝕏</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">AI Chatbots</a></li>
+          <li><a href="services.html">Workflow Automation</a></li>
+          <li><a href="services.html">Custom AI Agents</a></li>
+          <li><a href="services.html">AI Consulting</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:skymindautomation@gmail.com">skymindautomation@gmail.com</a></li>
+          <li><a href="contact.html">Book a Call</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span data-year>2026</span> Skymind Automation. All rights reserved.</p>
+      <div class="legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
