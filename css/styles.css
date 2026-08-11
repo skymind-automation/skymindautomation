@@ -222,15 +222,8 @@ header.site-header {
 .logo-mark {
   width: 34px;
   height: 34px;
-  border-radius: 9px;
-  background: var(--gradient);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  color: #05060b;
-  font-weight: 800;
-  box-shadow: 0 4px 16px rgba(91,124,255,0.4);
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 nav.main-nav ul {
