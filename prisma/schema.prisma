@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model ContactLead {
+  id             String   @id @default(cuid())
+  // Identity
+  name           String
+  email          String
+  company        String?
+  phone          String?
+
+  // Classification
+  companySize    String?
+  service        String?
+  budgetRange    String?
+  timeline       String?
+
+  // Content
+  goal           String
+  currentSystems String?
+  message        String
+
+  // Metadata
+  source         String   @default("website")
+  status         String   @default("new") // new | contacted | qualified | closed
+  ipHash         String?  // hashed IP for rate limiting / abuse, never raw
+  userAgent      String?
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([createdAt])
+  @@index([email])
+  @@index([status])
+}
+
+model ContactRateLimit {
+  id        String   @id @default(cuid())
+  key       String   @unique // ip hash or email
+  count     Int      @default(1)
+  windowEnd DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
