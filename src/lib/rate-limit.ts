@@ -1,7 +1,4 @@
-import { db } from "@/lib/db";
-
-// Simple time-window rate limiter using the database.
-// Limits are per-identifier (hashed IP + email) over a rolling window.
+import { getDb } from "@/lib/db";
 
 const WINDOW_MINUTES = 15;
 const MAX_REQUESTS_PER_WINDOW = 3;
@@ -12,19 +9,30 @@ type RateLimitResult = {
   resetAt: Date;
 };
 
-export async function checkRateLimit(identifier: string): Promise<RateLimitResult> {
+export async function checkRateLimit(
+  identifier: string
+): Promise<RateLimitResult> {
+  const db = getDb();
+
+  // No identifier? Fail conservatively.
   if (!identifier) {
-    // No identifier? Allow but conservatively.
-    return { ok: true, remaining: 0, resetAt: new Date(Date.now() + WINDOW_MINUTES * 60_000) };
+    return {
+      ok: false,
+      remaining: 0,
+      resetAt: new Date(Date.now() + WINDOW_MINUTES * 60_000),
+    };
   }
 
   const now = new Date();
-  const windowEnd = new Date(now.getTime() + WINDOW_MINUTES * 60_000);
+  const windowEnd = new Date(
+    now.getTime() + WINDOW_MINUTES * 60_000
+  );
 
   const existing = await db.contactRateLimit.findUnique({
     where: { key: identifier },
   });
 
+  // First request for this identifier.
   if (!existing) {
     await db.contactRateLimit.create({
       data: {
@@ -33,21 +41,33 @@ export async function checkRateLimit(identifier: string): Promise<RateLimitResul
         windowEnd,
       },
     });
-    return { ok: true, remaining: MAX_REQUESTS_PER_WINDOW - 1, resetAt: windowEnd };
+
+    return {
+      ok: true,
+      remaining: MAX_REQUESTS_PER_WINDOW - 1,
+      resetAt: windowEnd,
+    };
   }
 
-  // If the window has passed, reset.
-  if (existing.windowEnd < now) {
+  // Existing window has expired — start a new window.
+  if (existing.windowEnd <= now) {
     await db.contactRateLimit.update({
       where: { key: identifier },
-      data: { count: 1, windowEnd },
+      data: {
+        count: 1,
+        windowEnd,
+      },
     });
-    return { ok: true, remaining: MAX_REQUESTS_PER_WINDOW - 1, resetAt: windowEnd };
+
+    return {
+      ok: true,
+      remaining: MAX_REQUESTS_PER_WINDOW - 1,
+      resetAt: windowEnd,
+    };
   }
 
-  // Within window — increment and check.
-  const newCount = existing.count + 1;
-  if (newCount > MAX_REQUESTS_PER_WINDOW) {
+  // Already at the limit.
+  if (existing.count >= MAX_REQUESTS_PER_WINDOW) {
     return {
       ok: false,
       remaining: 0,
@@ -55,14 +75,22 @@ export async function checkRateLimit(identifier: string): Promise<RateLimitResul
     };
   }
 
-  await db.contactRateLimit.update({
+  // Increment within the active window.
+  const updated = await db.contactRateLimit.update({
     where: { key: identifier },
-    data: { count: newCount },
+    data: {
+      count: {
+        increment: 1,
+      },
+    },
   });
 
   return {
     ok: true,
-    remaining: MAX_REQUESTS_PER_WINDOW - newCount,
+    remaining: Math.max(
+      0,
+      MAX_REQUESTS_PER_WINDOW - updated.count
+    ),
     resetAt: existing.windowEnd,
   };
 }

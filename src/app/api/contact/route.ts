@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { parseContactForm } from "@/lib/validations/contact";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { hashIdentifier, getClientIp } from "@/lib/security";
@@ -12,6 +12,7 @@ export const dynamic = "force-dynamic";
 const MAX_BODY_BYTES = 16 * 1024; // 16 KB
 
 export async function POST(request: Request) {
+  const db = getDb();
   // 1. Size guard.
   const contentLength = request.headers.get("content-length");
   if (contentLength && parseInt(contentLength, 10) > MAX_BODY_BYTES) {
