@@ -1,14 +1,14 @@
+"use client";
+
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * SkyMindLogo — a geometric hex+cube "sky/mind" mark.
+ * SkyMindLogo — the brand "SM" monogram: two interlocking angular facets
+ * (S above, M below) linked by network nodes, painted with the brand
+ * cyan → blue → violet → magenta gradient.
  *
- * The outer hexagon suggests intelligence/network; the inner cube facets
- * suggest structure/engineering. Purely geometric — NOT a robot. Uses
- * `currentColor` so the parent controls the accent (default `text-primary`).
- *
- * @param withWordmark - renders the "SkyMind" wordmark + mono "Automation" suffix
+ * @param withWordmark - renders the "SKYMIND" wordmark + "AUTOMATION" suffix
  */
 export function SkyMindLogo({
   className,
@@ -19,6 +19,10 @@ export function SkyMindLogo({
   withWordmark?: boolean;
   wordmarkClassName?: string;
 }) {
+  // Unique per instance — the mark renders in both navbar and footer, and
+  // duplicate gradient ids would make one of them paint from the other's defs.
+  const gradientId = `skymind-mark-${React.useId().replace(/:/g, "")}`;
+
   const mark = (
     <svg
       viewBox="0 0 32 32"
@@ -26,38 +30,50 @@ export function SkyMindLogo({
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="SkyMind Automation logo"
-      className={cn("size-7 text-primary", className)}
+      className={cn("size-7", className)}
       {...props}
     >
-      {/* outer hexagon — intelligence / network boundary */}
+      <defs>
+        <linearGradient
+          id={gradientId}
+          gradientUnits="userSpaceOnUse"
+          x1="4"
+          y1="2"
+          x2="28"
+          y2="30"
+        >
+          <stop offset="0%" stopColor="var(--brand-cyan)" />
+          <stop offset="38%" stopColor="var(--brand-blue)" />
+          <stop offset="70%" stopColor="var(--brand-violet)" />
+          <stop offset="100%" stopColor="var(--brand-magenta)" />
+        </linearGradient>
+      </defs>
+
+      {/* Upper facet — angled cube face */}
       <path
-        d="M16 1.2 28.5 8.4 28.5 23.6 16 30.8 3.5 23.6 3.5 8.4 Z"
-        stroke="currentColor"
+        d="M10.4 5.6 H23.4 L19.4 11 H6.4 Z"
+        fill={`url(#${gradientId})`}
+      />
+      {/* Lower facet — angular "M" */}
+      <path
+        d="M7.4 13.2 V26.6 H11.8 V20.4 L16 24.6 L20.2 20.4 V26.6 H24.6 V13.2 L16 21.8 Z"
+        fill={`url(#${gradientId})`}
+      />
+      {/* Connector stalks with nodes — network / signal */}
+      <path
+        d="M23 6.3 27 2.6"
+        stroke={`url(#${gradientId})`}
         strokeWidth="1.4"
-        strokeLinejoin="round"
-        opacity="0.55"
+        strokeLinecap="round"
       />
-      {/* inner cube facets — built / engineered system */}
-      {/* top rhombus */}
+      <circle cx="27.6" cy="2" r="1.7" fill={`url(#${gradientId})`} />
       <path
-        d="M16 6.6 24.2 11.3 16 16 7.8 11.3 Z"
-        fill="currentColor"
-        opacity="0.95"
+        d="M7.4 26.5 4.4 29.5"
+        stroke={`url(#${gradientId})`}
+        strokeWidth="1.4"
+        strokeLinecap="round"
       />
-      {/* right facet */}
-      <path
-        d="M16 16 24.2 11.3 24.2 20.7 16 25.4 Z"
-        fill="currentColor"
-        opacity="0.55"
-      />
-      {/* left facet */}
-      <path
-        d="M16 16 7.8 11.3 7.8 20.7 16 25.4 Z"
-        fill="currentColor"
-        opacity="0.3"
-      />
-      {/* subtle center node */}
-      <circle cx="16" cy="16" r="1.1" fill="var(--background)" opacity="0.9" />
+      <circle cx="3.8" cy="30.1" r="1.7" fill={`url(#${gradientId})`} />
     </svg>
   );
 

@@ -27,6 +27,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { SkyMindLogo } from "@/components/layout/logo";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 const SCROLL_THRESHOLD = 8;
 
@@ -116,6 +117,7 @@ export function Navbar() {
 
         {/* Desktop right actions */}
         <div className="hidden items-center gap-2 lg:flex">
+          <ThemeToggle className="size-9 rounded-md text-muted-foreground hover:text-foreground" />
           <Button
             asChild
             variant="ghost"
@@ -133,7 +135,8 @@ export function Navbar() {
         </div>
 
         {/* Mobile trigger */}
-        <div className="flex items-center lg:hidden">
+        <div className="flex items-center gap-1 lg:hidden">
+          <ThemeToggle className="size-10 rounded-md text-muted-foreground hover:text-foreground" />
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
               <Button
