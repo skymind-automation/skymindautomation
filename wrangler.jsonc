@@ -2,6 +2,11 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "skymindautomation",
   "main": ".open-next/worker.js",
+  // `main` is an OpenNext build artifact, not a source file, so `wrangler
+  // deploy` fails on a clean checkout unless the bundle is generated first.
+  "build": {
+    "command": "npx opennextjs-cloudflare build"
+  },
   "compatibility_date": "2026-09-08",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
