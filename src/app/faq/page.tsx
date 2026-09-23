@@ -40,9 +40,9 @@ function FaqsByCategory({ category }: { category: Faq["category"] }) {
   if (items.length === 0) return null;
   return (
     <div>
-      <h3 className="text-mono-label text-muted-foreground">
+      <h2 className="text-mono-label text-muted-foreground">
         {categoryLabels[category]}
-      </h3>
+      </h2>
       <Accordion type="single" collapsible className="mt-4 w-full">
         {items.map((faq) => {
           const itemId = `faq-${category}-${faq.question

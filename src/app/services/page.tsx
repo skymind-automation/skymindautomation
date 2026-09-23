@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Search, ShieldAlert } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -31,7 +31,6 @@ export const metadata: Metadata = {
 };
 
 // Services in a higher-risk / adversarial posture — visually distinct.
-const RISK_SLUGS = new Set(["ai-security", "ai-red-teaming"]);
 
 const ENGAGE_STEPS = [
   {
@@ -122,7 +121,6 @@ export default function ServicesPage() {
           <ul className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => {
               const Icon = serviceIconMap[service.icon];
-              const isRisk = RISK_SLUGS.has(service.slug);
               const number = String(index + 1).padStart(2, "0");
               const href = `/services/${service.slug}`;
 
@@ -138,35 +136,16 @@ export default function ServicesPage() {
                         "group relative h-full gap-0 overflow-hidden p-6 transition-all duration-300",
                         "group-hover:-translate-y-1 group-hover:border-primary/50 group-hover:shadow-lg",
                         "group-focus-within:border-primary/50 group-focus-within:shadow-lg",
-                        isRisk &&
-                          "border-destructive/30 group-hover:border-destructive/60",
                       )}
                     >
                       <div className="flex h-full flex-col gap-5">
-                        {/* Top row: number + risk flag */}
-                        <div className="flex items-center justify-between">
-                          <span className="font-mono text-xs tracking-widest text-muted-foreground">
-                            {number}
-                          </span>
-                          {isRisk && (
-                            <Badge
-                              variant="outline"
-                              className="border-destructive/40 font-mono text-[0.65rem] uppercase tracking-wider text-destructive/90"
-                            >
-                              <ShieldAlert className="size-3" />
-                              Adversarial
-                            </Badge>
-                          )}
-                        </div>
+                        <span className="font-mono text-xs tracking-widest text-muted-foreground">
+                          {number}
+                        </span>
 
                         {/* Icon */}
                         <div
-                          className={cn(
-                            "flex size-12 items-center justify-center rounded-lg border transition-colors",
-                            isRisk
-                              ? "border-destructive/30 bg-destructive/5 text-destructive"
-                              : "border-primary/30 bg-primary/5 text-primary",
-                          )}
+                          className="flex size-12 items-center justify-center rounded-lg border border-primary/30 bg-primary/5 text-primary transition-colors"
                         >
                           <Icon className="size-6" aria-hidden />
                         </div>
@@ -176,10 +155,7 @@ export default function ServicesPage() {
                           <h3 className="font-sans text-xl font-semibold tracking-tight">
                             {service.name}
                           </h3>
-                          <p className="text-sm font-medium text-primary/90">
-                            {service.tagline}
-                          </p>
-                          <p className="mt-1 text-sm text-muted-foreground text-pretty">
+                          <p className="text-sm text-muted-foreground text-pretty">
                             {service.summary}
                           </p>
                         </div>

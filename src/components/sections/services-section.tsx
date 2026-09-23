@@ -38,7 +38,7 @@ export function ServicesSection() {
               {/* mono index */}
               <span
                 aria-hidden
-                className="absolute right-5 top-5 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground/60"
+                className="absolute right-5 top-5 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground"
               >
                 {index}
               </span>

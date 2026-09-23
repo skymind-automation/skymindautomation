@@ -177,7 +177,7 @@ export function SecuritySection() {
           <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">
             methodology
           </span>
-          <span className="font-mono text-[0.65rem] text-muted-foreground/40">
+          <span aria-hidden className="font-mono text-[0.65rem] text-muted-foreground/40">
             /
           </span>
           <ul className="flex flex-wrap items-center gap-x-3 gap-y-2">
