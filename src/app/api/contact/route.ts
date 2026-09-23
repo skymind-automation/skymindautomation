@@ -1,171 +1,108 @@
 import { NextResponse } from "next/server";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { getDb } from "@/lib/db";
 import { parseContactForm } from "@/lib/validations/contact";
 import { checkRateLimit } from "@/lib/rate-limit";
-import { hashIdentifier, getClientIp } from "@/lib/security";
-import { siteConfig } from "@/config/site";
+import { hashIdentifier, getClientIp, isSameOrigin } from "@/lib/security";
+import { sendLeadAlert } from "@/lib/lead-alert";
 
-// Force this endpoint to be dynamic — it always interacts with the DB.
 export const dynamic = "force-dynamic";
 
-// Reject unreasonably large payloads early.
-const MAX_BODY_BYTES = 16 * 1024; // 16 KB
+const MAX_BODY_BYTES = 16 * 1024;
+const FALLBACK_SALT = "skymind-automation-v1";
+const RECEIVED =
+  "Thanks — your inquiry has been received. We'll respond within one business day.";
+
+const fail = (status: number, error: string, extra: Record<string, unknown> = {}) =>
+  NextResponse.json({ ok: false, error, ...extra }, { status });
 
 export async function POST(request: Request) {
-  const db = getDb();
-  // 1. Size guard.
-  const contentLength = request.headers.get("content-length");
-  if (contentLength && parseInt(contentLength, 10) > MAX_BODY_BYTES) {
-    return NextResponse.json(
-      { ok: false, error: "Request too large." },
-      { status: 413 },
-    );
-  }
+  const { env, ctx } = getCloudflareContext();
 
-  // 2. Parse JSON safely.
+  if (!isSameOrigin(request)) return fail(403, "Forbidden.");
+
+  // Content-Length can be absent or wrong, so the body size is checked again after reading.
+  if (Number(request.headers.get("content-length") ?? 0) > MAX_BODY_BYTES) {
+    return fail(413, "Request too large.");
+  }
+  const raw = await request.text();
+  if (raw.length > MAX_BODY_BYTES) return fail(413, "Request too large.");
+
   let body: unknown;
   try {
-    body = await request.json();
+    body = JSON.parse(raw);
   } catch {
-    return NextResponse.json(
-      { ok: false, error: "Invalid request body." },
-      { status: 400 },
-    );
+    return fail(400, "Invalid request body.");
   }
 
-  // 3. Validate with Zod.
+  // Honeypot: answer bots with an ordinary success so they learn nothing.
+  if (typeof body === "object" && body && (body as { website?: unknown }).website) {
+    return NextResponse.json({ ok: true, message: RECEIVED }, { status: 201 });
+  }
+
   const parsed = parseContactForm(body);
   if (!parsed.success) {
-    return NextResponse.json(
-      {
-        ok: false,
-        error: "Validation failed.",
-        fields: parsed.error.flatten().fieldErrors,
-      },
-      { status: 422 },
-    );
+    return fail(422, "Validation failed.", { fields: parsed.error.flatten().fieldErrors });
   }
-
   const data = parsed.data;
 
-  // 4. Rate limit by hashed IP + email combo.
-  const ip = getClientIp(request);
-  const ipHash = hashIdentifier(ip);
-  const emailHash = hashIdentifier(data.email);
-  const rateLimitKey = `${ipHash}::${emailHash}`;
+  if (!env.RATE_LIMIT_SALT) console.warn("[contact] RATE_LIMIT_SALT is not set; IP hashes use a public salt");
+  const ipHash = hashIdentifier(getClientIp(request), env.RATE_LIMIT_SALT || FALLBACK_SALT);
 
   try {
-    const rl = await checkRateLimit(rateLimitKey);
+    const rl = await checkRateLimit(ipHash);
     if (!rl.ok) {
+      const retryAfter = Math.max(1, Math.ceil((rl.resetAt.getTime() - Date.now()) / 1000));
       return NextResponse.json(
-        {
-          ok: false,
-          error: "Too many submissions. Please try again later.",
-          retryAfter: rl.resetAt.toISOString(),
-        },
-        {
-          status: 429,
-          headers: { "Retry-After": String(Math.ceil((rl.resetAt.getTime() - Date.now()) / 1000)) },
-        },
+        { ok: false, error: "Too many submissions. Please try again later.", retryAfter: rl.resetAt.toISOString() },
+        { status: 429, headers: { "Retry-After": String(retryAfter) } },
       );
     }
   } catch (err) {
-    // If rate limit infra fails, fail open but log. We don't want to block real users.
+    // A rate-limit outage should not cost a real lead.
     console.error("[contact] rate-limit check failed:", err);
   }
 
-  // 5. Persist the lead.
+  const id = crypto.randomUUID();
+  const now = new Date().toISOString();
   try {
-    const lead = await db.contactLead.create({
-      data: {
-        name: data.name,
-        email: data.email.toLowerCase(),
-        company: data.company || null,
-        phone: data.phone || null,
-        companySize: data.companySize || null,
-        service: data.service || null,
-        budgetRange: data.budgetRange || null,
-        timeline: data.timeline || null,
-        goal: data.goal,
-        currentSystems: data.currentSystems || null,
-        message: data.message || data.goal,
+    await getDb()
+      .prepare(
+        `INSERT INTO "ContactLead" ("id","name","email","company","phone","companySize","service","budgetRange",
+          "timeline","goal","currentSystems","message","source","status","ipHash","userAgent","createdAt","updatedAt")
+         VALUES (?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,'website','new',?13,?14,?15,?15)`,
+      )
+      .bind(
+        id,
+        data.name,
+        data.email.toLowerCase(),
+        data.company || null,
+        data.phone || null,
+        data.companySize || null,
+        data.service || null,
+        data.budgetRange || null,
+        data.timeline || null,
+        data.goal,
+        data.currentSystems || null,
+        data.message || data.goal,
         ipHash,
-        userAgent: request.headers.get("user-agent")?.slice(0, 255) || null,
-        source: "website",
-      },
-    });
-
-    // 6. (Optional) Email notification hook.
-    // Wire up your email provider here (Resend, SES, Postmark, etc.).
-    // We keep the integration abstracted so secrets stay server-side.
-    try {
-      await maybeNotifyByEmail({
-        to: siteConfig.email,
-        subject: `New AI inquiry — ${data.service || "General"} — ${data.name}`,
-        leadId: lead.id,
-        data,
-      });
-    } catch (err) {
-      // Email is best-effort — the lead is already stored.
-      console.error("[contact] email notification failed:", err);
-    }
-
-    return NextResponse.json(
-      {
-        ok: true,
-        message:
-          "Thanks — your inquiry has been received. We'll respond within one business day.",
-        id: lead.id,
-      },
-      { status: 201 },
-    );
+        request.headers.get("user-agent")?.slice(0, 255) || null,
+        now,
+      )
+      .run();
   } catch (err) {
-    console.error("[contact] failed to persist lead:", err);
-    return NextResponse.json(
-      { ok: false, error: "Something went wrong on our side. Please try again." },
-      { status: 500 },
-    );
+    console.error("[contact] failed to store lead:", err);
+    return fail(500, "Something went wrong on our side. Please try again.");
   }
+
+  // The lead is already stored; the alert goes out after the response is sent.
+  ctx.waitUntil(
+    sendLeadAlert(env, data, id).catch((err) => console.error(`[contact] alert failed for lead ${id}:`, err)),
+  );
+
+  return NextResponse.json({ ok: true, message: RECEIVED, id }, { status: 201 });
 }
 
-// Lightweight health for monitoring.
 export async function GET() {
   return NextResponse.json({ ok: true, endpoint: "contact" });
-}
-
-/**
- * Email provider integration point.
- *
- * Replace this with your provider call (Resend, SES, Postmark, etc.).
- * The function receives already-validated data and never exposes secrets.
- *
- * Example (Resend):
- *   import { Resend } from 'resend';
- *   const resend = new Resend(process.env.RESEND_API_KEY);
- *   await resend.emails.send({ from, to, subject, html });
- *
- * Until configured, this is a no-op that logs server-side only.
- */
-async function maybeNotifyByEmail(args: {
-  to: string;
-  subject: string;
-  leadId: string;
-  data: {
-    name: string;
-    email: string;
-    company?: string;
-    service?: string;
-    goal: string;
-  };
-}) {
-  if (!process.env.EMAIL_PROVIDER_ENABLED) {
-    // No provider configured — log and exit cleanly.
-    if (process.env.NODE_ENV !== "production") {
-      console.log(`[contact] new lead ${args.leadId} for ${args.to}`);
-    }
-    return;
-  }
-
-  // When a provider is configured, implement the actual send here.
-  // Secrets MUST come from environment variables only.
 }

@@ -1,26 +1,32 @@
 import { createHash } from "crypto";
 
 /**
- * Hash an identifier (IP or email) for rate limiting and abuse prevention.
- * We never store raw IPs — only a one-way hash. This keeps us honest about
- * privacy: we can detect repeat submissions without keeping a log of IPs.
+ * One-way hash for IPs, so repeat submissions can be detected without storing
+ * addresses. The salt must be a secret: IPv4 is small enough to brute-force
+ * against a known salt, which would make these hashes reversible.
  */
-export function hashIdentifier(input: string): string {
-  if (!input) return "";
-  // Use a stable salt so hashes are consistent within a deployment.
-  const salt = process.env.RATE_LIMIT_SALT || "skymind-automation-v1";
+export function hashIdentifier(input: string, salt: string): string {
   return createHash("sha256")
     .update(`${salt}::${input.trim().toLowerCase()}`)
     .digest("hex");
 }
 
+/**
+ * CF-Connecting-IP is set by Cloudflare and cannot be supplied by the client.
+ * X-Forwarded-For can: Cloudflare appends the real address after whatever the
+ * client sent, so trusting its first entry lets anyone pick their own IP.
+ */
 export function getClientIp(request: Request): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  if (forwarded) {
-    // First IP in the chain is the client
-    return forwarded.split(",")[0].trim();
+  return request.headers.get("cf-connecting-ip")?.trim() || "unknown";
+}
+
+/** Rejects cross-site posts: a browser always sends Origin on a cross-origin POST. */
+export function isSameOrigin(request: Request): boolean {
+  const origin = request.headers.get("origin");
+  if (!origin) return true;
+  try {
+    return new URL(origin).host === request.headers.get("host");
+  } catch {
+    return false;
   }
-  const realIp = request.headers.get("x-real-ip");
-  if (realIp) return realIp.trim();
-  return "unknown";
 }
