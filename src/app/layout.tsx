@@ -51,11 +51,30 @@ export const metadata: Metadata = {
     siteName: "SkyMind Automation",
     title: "AI Automation & AI Engineering Company | SkyMind Automation",
     description: siteConfig.description,
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        type: "image/jpeg",
+        alt: "SkyMind Automation logo and wordmark with the tagline Build. Automate. Evaluate. Secure.",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "SkyMind Automation",
     description: siteConfig.description,
+    images: ["/og.jpg"],
+  },
+  // Served from public/ so Cloudflare's asset layer handles them. Image files
+  // under app/ are compiled into the Worker as base64 route handlers.
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
   },
   robots: {
     index: true,
