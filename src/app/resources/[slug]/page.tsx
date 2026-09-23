@@ -16,7 +16,6 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
-import { MonoLabel } from "@/components/shared/mono-label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {

@@ -1,8 +1,7 @@
 import * as React from "react";
-import { Users, ShieldCheck, Workflow, ArrowRight } from "lucide-react";
+import { Users, ShieldCheck, Workflow } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
-import { MonoLabel } from "@/components/shared/mono-label";
 import { ArrowLink } from "@/components/shared/arrow-link";
 import { InitialsAvatar } from "@/components/shared/initials-avatar";
 import { teamMembers } from "@/content/team";
