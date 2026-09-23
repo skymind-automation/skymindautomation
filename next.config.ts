@@ -35,9 +35,16 @@ const nextConfig: NextConfig = {
   output: "standalone",
   reactStrictMode: true,
   poweredByHeader: false,
-  // The resources hub listed articles that were never written; its FAQ moved to /faq.
+  // www goes to the apex so the site has one canonical host. The resources hub
+  // listed articles that were never written; its FAQ moved to /faq.
   async redirects() {
     return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.skymindautomation.com" }],
+        destination: "https://skymindautomation.com/:path*",
+        permanent: true,
+      },
       { source: "/resources", destination: "/faq", permanent: true },
       { source: "/resources/:slug", destination: "/faq", permanent: true },
     ];

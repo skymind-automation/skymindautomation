@@ -11,6 +11,15 @@
   // serialises a function into an inline script, where that helper does not
   // exist, so the theme was never applied before first paint.
   "keep_names": false,
+  // Custom domains are created with their DNS records and certificates on
+  // deploy. The zone must be on this account and the hostnames must have no
+  // other DNS records. www redirects to the apex in next.config.ts.
+  "routes": [
+    { "pattern": "skymindautomation.com", "custom_domain": true },
+    { "pattern": "www.skymindautomation.com", "custom_domain": true }
+  ],
+  // Keep the workers.dev address serving, since it has already been shared.
+  "workers_dev": true,
   "compatibility_date": "2026-09-08",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
