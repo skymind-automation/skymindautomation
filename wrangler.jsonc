@@ -7,6 +7,10 @@
   "build": {
     "command": "npx opennextjs-cloudflare build"
   },
+  // esbuild's keep_names wraps functions in a __name() helper. next-themes
+  // serialises a function into an inline script, where that helper does not
+  // exist, so the theme was never applied before first paint.
+  "keep_names": false,
   "compatibility_date": "2026-09-08",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {

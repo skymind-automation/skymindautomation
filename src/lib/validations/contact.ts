@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+// Zod 4 probes new Function() to compile schemas. The site's CSP and the
+// Workers runtime both forbid eval, so the probe only produced violations.
+z.config({ jitless: true });
+
 export const serviceOptions = [
   "AI Implementation",
   "AI Automation",

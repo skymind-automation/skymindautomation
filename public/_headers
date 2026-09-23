@@ -1,0 +1,9 @@
+# Workers Static Assets serves these files without running the Worker, so
+# next.config.ts headers never apply to them.
+
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*
+  X-Content-Type-Options: nosniff
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
