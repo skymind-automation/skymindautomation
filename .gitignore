@@ -42,13 +42,12 @@ yarn-error.log*
 next-env.d.ts
 local-*
 .claude
-.z-ai-config
 *.log
 dev.log
 dev.out.log
-test
-prompt
 
 server.log
-# Skills directory
-/skills/
+# cloudflare / opennext build output and local state
+/.open-next/
+/.wrangler/
+.dev.vars*
