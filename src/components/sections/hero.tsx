@@ -1,8 +1,5 @@
-"use client";
-
 import * as React from "react";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Activity } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -23,16 +20,10 @@ const HERO_CAPABILITIES = [
   "AI Security",
 ];
 
+// Server-rendered with no entrance animation: the copy used to start at
+// opacity 0 until framer-motion hydrated, which delayed the largest paint by
+// almost five seconds on a throttled phone.
 export function Hero() {
-  const reduce = useReducedMotion();
-  const fade = reduce
-    ? {}
-    : {
-        initial: { opacity: 0, y: 12 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
-      };
-
   return (
     <section
       className="relative isolate overflow-hidden bg-background pt-28 pb-16 sm:pt-32 lg:pt-36 lg:pb-24"
@@ -50,10 +41,7 @@ export function Hero() {
 
       <Container className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-10">
         {/* ---------------- Left column: copy + CTAs ---------------- */}
-        <motion.div
-          className="flex flex-col gap-7 lg:col-span-6"
-          {...fade}
-        >
+        <div className="flex flex-col gap-7 lg:col-span-6">
           <MonoLabel>AI Engineering &amp; Automation</MonoLabel>
 
           <h1
@@ -119,23 +107,10 @@ export function Hero() {
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* ---------------- Right column: lifecycle visual ---------------- */}
-        <motion.div
-          className="relative lg:col-span-6"
-          {...(reduce
-            ? {}
-            : {
-                initial: { opacity: 0, y: 16 },
-                animate: { opacity: 1, y: 0 },
-                transition: {
-                  duration: 0.6,
-                  delay: 0.15,
-                  ease: [0.22, 1, 0.36, 1] as const,
-                },
-              })}
-        >
+        <div className="relative lg:col-span-6">
           {/* visual frame */}
           <div className="relative mt-10 rounded-xl border border-border bg-card/30 p-4 backdrop-blur-sm sm:p-6 lg:mt-0">
             <div className="mb-4 flex items-center justify-between">
@@ -150,7 +125,7 @@ export function Hero() {
 
             {/* Desktop / tablet: vertical lifecycle with flow line */}
             <div className="hidden sm:block">
-              <LifecycleVertical reduce={!!reduce} />
+              <LifecycleVertical />
             </div>
 
             {/* Mobile: horizontal scroll-snap row */}
@@ -158,7 +133,7 @@ export function Hero() {
               <LifecycleHorizontal />
             </div>
           </div>
-        </motion.div>
+        </div>
       </Container>
 
       {/* scoped styles for the lifecycle flow animation */}
@@ -194,7 +169,7 @@ export function Hero() {
 
 /* ----------------------- Vertical lifecycle (desktop) ---------------------- */
 
-function LifecycleVertical({ reduce }: { reduce: boolean }) {
+function LifecycleVertical() {
   return (
     <ol className="relative flex flex-col gap-3 pl-8">
       {/* vertical flow line */}
@@ -204,10 +179,7 @@ function LifecycleVertical({ reduce }: { reduce: boolean }) {
       >
         {/* animated primary pulse traveling downward */}
         <div
-          className={cn(
-            "absolute inset-x-0 top-0 h-12 w-px bg-gradient-to-b from-transparent via-primary to-transparent",
-            !reduce && "hero-flow-pulse",
-          )}
+          className="hero-flow-pulse absolute inset-x-0 top-0 h-12 w-px bg-gradient-to-b from-transparent via-primary to-transparent"
         />
       </div>
 

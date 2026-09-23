@@ -83,8 +83,8 @@ export function SkyMindLogo({
       {mark}
       <span className="flex flex-col leading-none">
         <span className="font-sans text-base font-semibold tracking-tight text-foreground">
-          SkyMind
-          <span className="ml-1.5 font-mono text-[0.6rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+          SkyMind{" "}
+          <span className="ml-0.5 font-mono text-[0.6rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
             Automation
           </span>
         </span>

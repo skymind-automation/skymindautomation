@@ -73,8 +73,8 @@ export function Navbar() {
           <SkyMindLogo className="size-8 transition-transform duration-300 group-hover:rotate-[8deg]" />
           <span className="hidden flex-col leading-none sm:flex">
             <span className="font-sans text-base font-semibold tracking-tight text-foreground">
-              SkyMind
-              <span className="ml-1.5 font-mono text-[0.6rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+              SkyMind{" "}
+              <span className="ml-0.5 font-mono text-[0.6rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                 Automation
               </span>
             </span>
@@ -157,8 +157,8 @@ export function Navbar() {
                   <Link href="/" className="inline-flex items-center gap-2.5">
                     <SkyMindLogo className="size-7" />
                     <span className="font-sans text-base font-semibold tracking-tight text-foreground">
-                      SkyMind
-                      <span className="ml-1.5 font-mono text-[0.6rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                      SkyMind{" "}
+                      <span className="ml-0.5 font-mono text-[0.6rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                         Automation
                       </span>
                     </span>
