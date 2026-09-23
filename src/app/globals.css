@@ -47,20 +47,23 @@
   SkyMind Automation — Premium technical theme.
   Default mode is dark. Light mode is a clean neutral with the same accent.
   Accent follows the brand logo gradient: cyan → blue → violet → magenta.
+  Stops are sampled from the master logo artwork, not approximated.
 */
 :root {
   --radius: 0.625rem;
 
   /* Brand gradient stops — shared by both modes (logo, display text, accents) */
-  --brand-cyan: oklch(0.8 0.14 200);
-  --brand-blue: oklch(0.62 0.2 260);
-  --brand-violet: oklch(0.62 0.24 295);
-  --brand-magenta: oklch(0.65 0.28 320);
+  --brand-cyan: oklch(0.86 0.147 204.1);
+  --brand-azure: oklch(0.615 0.191 256);
+  --brand-blue: oklch(0.509 0.252 272.9);
+  --brand-violet: oklch(0.52 0.271 291.6);
+  --brand-magenta: oklch(0.623 0.296 316.7);
   --brand-gradient: linear-gradient(
     100deg,
     var(--brand-cyan) 0%,
-    var(--brand-blue) 38%,
-    var(--brand-violet) 70%,
+    var(--brand-azure) 30%,
+    var(--brand-blue) 52%,
+    var(--brand-violet) 74%,
     var(--brand-magenta) 100%
   );
 
@@ -71,7 +74,7 @@
   --card-foreground: oklch(0.18 0.015 275);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.015 275);
-  --primary: oklch(0.55 0.22 275);
+  --primary: oklch(0.52 0.23 272);
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.96 0.006 275);
   --secondary-foreground: oklch(0.25 0.025 275);
@@ -82,20 +85,20 @@
   --destructive: oklch(0.58 0.22 25);
   --border: oklch(0.9 0.008 275);
   --input: oklch(0.9 0.008 275);
-  --ring: oklch(0.55 0.22 275);
-  --chart-1: oklch(0.55 0.22 275);
+  --ring: oklch(0.52 0.23 272);
+  --chart-1: oklch(0.52 0.23 272);
   --chart-2: oklch(0.62 0.16 215);
   --chart-3: oklch(0.6 0.24 315);
   --chart-4: oklch(0.66 0.15 190);
   --chart-5: oklch(0.58 0.2 340);
   --sidebar: oklch(0.985 0.002 260);
   --sidebar-foreground: oklch(0.18 0.015 275);
-  --sidebar-primary: oklch(0.55 0.22 275);
+  --sidebar-primary: oklch(0.52 0.23 272);
   --sidebar-primary-foreground: oklch(0.99 0 0);
   --sidebar-accent: oklch(0.95 0.03 275);
   --sidebar-accent-foreground: oklch(0.34 0.12 275);
   --sidebar-border: oklch(0.9 0.008 275);
-  --sidebar-ring: oklch(0.55 0.22 275);
+  --sidebar-ring: oklch(0.52 0.23 272);
 }
 
 .dark {
@@ -106,8 +109,9 @@
   --card-foreground: oklch(0.96 0.005 275);
   --popover: oklch(0.15 0.01 275);
   --popover-foreground: oklch(0.96 0.005 275);
-  --primary: oklch(0.7 0.19 275);
-  --primary-foreground: oklch(0.99 0 0);
+  --primary: oklch(0.72 0.17 272);
+  /* Dark text on the bright accent: white here measured 2.81:1 (fails AA); this is 7.5:1. */
+  --primary-foreground: oklch(0.15 0.03 272);
   --secondary: oklch(0.2 0.015 275);
   --secondary-foreground: oklch(0.95 0.005 275);
   --muted: oklch(0.19 0.012 275);
@@ -117,20 +121,20 @@
   --destructive: oklch(0.68 0.19 22);
   --border: oklch(1 0 0 / 8%);
   --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.7 0.19 275);
-  --chart-1: oklch(0.7 0.19 275);
+  --ring: oklch(0.72 0.17 272);
+  --chart-1: oklch(0.72 0.17 272);
   --chart-2: oklch(0.78 0.14 205);
   --chart-3: oklch(0.68 0.24 315);
   --chart-4: oklch(0.8 0.13 190);
   --chart-5: oklch(0.7 0.22 340);
   --sidebar: oklch(0.13 0.008 275);
   --sidebar-foreground: oklch(0.96 0.005 275);
-  --sidebar-primary: oklch(0.7 0.19 275);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-primary: oklch(0.72 0.17 272);
+  --sidebar-primary-foreground: oklch(0.15 0.03 272);
   --sidebar-accent: oklch(0.26 0.04 275);
   --sidebar-accent-foreground: oklch(0.85 0.14 285);
   --sidebar-border: oklch(1 0 0 / 8%);
-  --sidebar-ring: oklch(0.7 0.19 275);
+  --sidebar-ring: oklch(0.72 0.17 272);
 }
 
 @layer base {

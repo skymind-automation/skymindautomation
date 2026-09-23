@@ -51,21 +51,11 @@ export const metadata: Metadata = {
     siteName: "SkyMind Automation",
     title: "AI Automation & AI Engineering Company | SkyMind Automation",
     description: siteConfig.description,
-    images: [
-      {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
-        alt: "SkyMind Automation — Build AI. Automate Work. Secure Intelligence.",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "SkyMind Automation",
     description: siteConfig.description,
-    images: ["/og.png"],
-    creator: "@skymindauto",
   },
   robots: {
     index: true,
@@ -78,17 +68,12 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  icons: {
-    icon: [{ url: "/favicon.ico", sizes: "any" }],
-    apple: "/apple-icon.png",
-  },
-  manifest: "/site.webmanifest",
 };
 
 export const viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fafafc" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0e14" },
+    { media: "(prefers-color-scheme: light)", color: "#f9fafb" },
+    { media: "(prefers-color-scheme: dark)", color: "#06070a" },
   ],
   width: "device-width",
   initialScale: 1,
