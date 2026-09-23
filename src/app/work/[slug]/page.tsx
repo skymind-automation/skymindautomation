@@ -38,7 +38,7 @@ export function generateMetadata({ params }: { params: Promise<Params> }): Promi
     const cs = getCaseStudy(p.slug);
     if (!cs) {
       return {
-        title: "Example Solution Not Found",
+        title: "Case study not found",
       };
     }
     return {
@@ -96,16 +96,8 @@ export default async function CaseStudyPage({
               <Badge variant="outline" className="font-mono text-xs">
                 {cs.tag}
               </Badge>
-              {cs.illustrative && (
-                <Badge
-                  variant="outline"
-                  className="border-amber-500/30 bg-amber-500/10 font-mono text-xs text-amber-300"
-                >
-                  Example Solution
-                </Badge>
-              )}
             </div>
-            <h1 className="mt-5 font-sans text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+            <h1 className="mt-5 font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
               {cs.title}
             </h1>
             <p className="mt-4 font-mono text-sm text-muted-foreground">
@@ -172,10 +164,10 @@ export default async function CaseStudyPage({
                 <CardContent className="px-0">
                   <div className="flex items-center gap-2">
                     <Wrench className="size-4 text-primary" aria-hidden />
-                    <span className="text-mono-label text-primary">Automation</span>
+                    <span className="text-mono-label text-primary">Key decisions</span>
                   </div>
                   <ul className="mt-4 space-y-2.5">
-                    {cs.automation.map((a) => (
+                    {cs.decisions.map((a) => (
                       <li
                         key={a}
                         className="flex items-start gap-2.5 text-sm text-muted-foreground text-pretty"
@@ -230,7 +222,7 @@ export default async function CaseStudyPage({
               <GitBranch className="size-4 text-primary" aria-hidden />
               <span className="text-mono-label text-primary">Architecture</span>
             </div>
-            <h2 className="mt-4 font-sans text-2xl font-semibold tracking-tight sm:text-3xl">
+            <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
               A layered system
             </h2>
             <p className="mt-3 max-w-2xl text-sm text-muted-foreground text-pretty sm:text-base">
@@ -276,7 +268,7 @@ export default async function CaseStudyPage({
                 <Layers className="size-4 text-primary" aria-hidden />
                 <span className="text-mono-label text-primary">Related services</span>
               </div>
-              <h2 className="mt-4 font-sans text-2xl font-semibold tracking-tight sm:text-3xl">
+              <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
                 Services that map to this work
               </h2>
               <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -320,7 +312,7 @@ export default async function CaseStudyPage({
                     <Target className="size-4 text-primary" aria-hidden />
                     <span className="text-mono-label text-primary">Engagement</span>
                   </div>
-                  <h2 className="mt-4 font-sans text-2xl font-semibold tracking-tight sm:text-3xl">
+                  <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
                     Want to scope something similar?
                   </h2>
                   <p className="mt-3 text-sm text-muted-foreground text-pretty sm:text-base">

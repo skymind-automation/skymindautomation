@@ -87,7 +87,7 @@ export default function ResourcesPage() {
         <Section withGrid className="pt-28 sm:pt-32 lg:pt-40">
           <Container className="max-w-4xl">
             <MonoLabel>Resources</MonoLabel>
-            <h1 className="mt-5 font-sans text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
               Engineering notes on AI
             </h1>
             <p className="mt-6 max-w-2xl text-base text-muted-foreground text-pretty sm:text-lg">
@@ -132,7 +132,7 @@ export default function ResourcesPage() {
 
                       <div>
                         <p className="text-mono-label text-muted-foreground">{res.topic}</p>
-                        <h2 className="mt-2 font-sans text-lg font-semibold tracking-tight text-balance">
+                        <h2 className="mt-2 font-display text-lg font-semibold tracking-tight text-balance">
                           {res.title}
                         </h2>
                         <p className="mt-2 text-sm text-muted-foreground text-pretty">
@@ -171,7 +171,7 @@ export default function ResourcesPage() {
               <HelpCircle className="size-4 text-primary" aria-hidden />
               <span className="text-mono-label text-primary">FAQ</span>
             </div>
-            <h2 className="mt-4 font-sans text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
+            <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
               Common questions
             </h2>
             <p className="mt-3 text-sm text-muted-foreground text-pretty sm:text-base">
@@ -197,7 +197,7 @@ export default function ResourcesPage() {
                     <BookOpen className="size-4 text-primary" aria-hidden />
                     <span className="text-mono-label text-primary">Engagement</span>
                   </div>
-                  <h2 className="mt-4 font-sans text-2xl font-semibold tracking-tight sm:text-3xl">
+                  <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
                     Have a question we did not answer?
                   </h2>
                   <p className="mt-3 text-sm text-muted-foreground text-pretty sm:text-base">

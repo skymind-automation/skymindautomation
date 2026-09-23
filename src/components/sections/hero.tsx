@@ -58,7 +58,7 @@ export function Hero() {
 
           <h1
             id="hero-heading"
-            className="text-balance font-sans text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
+            className="text-balance font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
           >
             <span className="text-primary text-glow">Build AI.</span>{" "}
             <span className="text-foreground">Automate Work.</span>{" "}
@@ -136,35 +136,6 @@ export function Hero() {
                 },
               })}
         >
-          {/* decorative floating code card */}
-          <div
-            aria-hidden
-            className="absolute -right-2 -top-6 z-20 hidden rotate-1 sm:block lg:-right-4"
-          >
-            <div className="relative w-64 rounded-lg border border-border bg-card/80 p-3 shadow-xl backdrop-blur-md">
-              <div className="mb-2 flex items-center gap-1.5">
-                <span className="size-2 rounded-full bg-destructive/70" />
-                <span className="size-2 rounded-full bg-amber-400/70" />
-                <span className="size-2 rounded-full bg-primary/70" />
-                <span className="ml-auto font-mono text-[0.6rem] uppercase tracking-[0.18em] text-muted-foreground">
-                  deploy.sh
-                </span>
-              </div>
-              <pre className="overflow-x-auto font-mono text-[0.7rem] leading-relaxed text-muted-foreground scrollbar-tech">
-                <code>
-                  <span className="text-primary">$</span> skymind.deploy({"{"}{" "}
-                  {"\n"}  guarded: <span className="text-primary">true</span>,
-                  {"\n"}  observability: <span className="text-primary">true</span>{" "}
-                  {"\n"}
-                  {"}"})
-                </code>
-              </pre>
-              <p className="mt-2 font-mono text-[0.6rem] uppercase tracking-[0.14em] text-primary">
-                ✓ build passing · 0 vulns
-              </p>
-            </div>
-          </div>
-
           {/* visual frame */}
           <div className="relative mt-10 rounded-xl border border-border bg-card/30 p-4 backdrop-blur-sm sm:p-6 lg:mt-0">
             <div className="mb-4 flex items-center justify-between">

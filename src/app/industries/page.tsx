@@ -25,7 +25,7 @@ export default function IndustriesPage() {
         <Section withGrid className="pt-28 sm:pt-32 lg:pt-40">
           <Container className="max-w-4xl">
             <MonoLabel>Industries</MonoLabel>
-            <h1 className="mt-5 font-sans text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
               AI engineering across industries
             </h1>
             <p className="mt-6 max-w-2xl text-base text-muted-foreground text-pretty sm:text-lg">
@@ -70,7 +70,7 @@ export default function IndustriesPage() {
                           <div>
                             <h2
                               id={headingId}
-                              className="font-sans text-xl font-semibold tracking-tight sm:text-2xl"
+                              className="font-display text-xl font-semibold tracking-tight sm:text-2xl"
                             >
                               {industry.name}
                             </h2>
@@ -151,7 +151,7 @@ export default function IndustriesPage() {
                     <Layers className="size-4 text-primary" aria-hidden />
                     <span className="text-mono-label text-primary">Industry</span>
                   </div>
-                  <h2 className="mt-4 font-sans text-2xl font-semibold tracking-tight sm:text-3xl">
+                  <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
                     Don&apos;t see your industry listed?
                   </h2>
                   <p className="mt-3 text-sm text-muted-foreground text-pretty sm:text-base">

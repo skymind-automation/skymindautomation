@@ -217,7 +217,7 @@ export default async function ServiceDetailPage({
             </div>
 
             {/* H1 + tagline */}
-            <h1 className="font-sans text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <h1 className="font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
               {service.name}
             </h1>
             <p className="max-w-3xl text-lg text-primary/90 text-pretty sm:text-xl">
@@ -272,7 +272,7 @@ export default async function ServiceDetailPage({
             <aside className="lg:sticky lg:top-24 lg:self-start">
               <Card className="gap-0 p-6">
                 <div className="flex items-center justify-between border-b border-border/60 pb-4">
-                  <h2 className="font-sans text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                  <h2 className="font-display text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                     Service Spec
                   </h2>
                   <span className="font-mono text-xs text-primary">
@@ -369,7 +369,7 @@ export default async function ServiceDetailPage({
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[20rem_1fr] lg:gap-14">
             <div className="flex flex-col gap-4">
               <MonoLabel>Deliverables</MonoLabel>
-              <h2 className="font-sans text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+              <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
                 What you walk away with
               </h2>
               <p className="max-w-md text-base text-muted-foreground text-pretty">
@@ -424,7 +424,7 @@ export default async function ServiceDetailPage({
               <div className="relative flex flex-col gap-8">
                 <div className="flex flex-col gap-3">
                   <MonoLabel>Outcomes</MonoLabel>
-                  <h2 className="font-sans text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+                  <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
                     What changes after this engagement
                   </h2>
                 </div>
@@ -466,7 +466,7 @@ export default async function ServiceDetailPage({
           >
             <div className="mb-10 flex flex-col gap-4">
               <MonoLabel>Related Services</MonoLabel>
-              <h2 className="font-sans text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+              <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
                 Frequently combined with
               </h2>
             </div>
@@ -520,7 +520,7 @@ export default async function ServiceDetailPage({
           <Container className="max-w-3xl">
             <div className="mb-8 flex flex-col gap-4">
               <MonoLabel>FAQ</MonoLabel>
-              <h2 className="font-sans text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+              <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
                 Common questions about {service.shortName}
               </h2>
             </div>
@@ -564,7 +564,7 @@ export default async function ServiceDetailPage({
               <div className="relative flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex flex-col gap-3">
                   <MonoLabel>Start the engagement</MonoLabel>
-                  <h2 className="font-sans text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
+                  <h2 className="font-display text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
                     Start {service.name}
                   </h2>
                   <p className="max-w-xl text-sm text-muted-foreground text-pretty sm:text-base">

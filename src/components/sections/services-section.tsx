@@ -20,10 +20,8 @@ export function ServicesSection() {
       <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6 lg:gap-6">
         {services.map((service, idx) => {
           const Icon = serviceIconMap[service.icon];
-          const isSecurity = service.slug === "ai-security";
-          const isRedTeam = service.slug === "ai-red-teaming";
-          const isCritical = isSecurity || isRedTeam;
-          const isFeatured = isRedTeam; // AI Red Teaming gets a wide featured card on lg
+          // The seventh card spans the row so the grid resolves evenly.
+          const isFeatured = service.slug === "ai-red-teaming";
           const index = String(idx + 1).padStart(2, "0");
 
           return (
@@ -31,10 +29,7 @@ export function ServicesSection() {
               key={service.slug}
               className={cn(
                 "group relative flex flex-col rounded-lg border bg-card p-6 transition-all duration-300",
-                "hover:-translate-y-1",
-                isCritical
-                  ? "border-amber-500/25 hover:border-amber-500/50 hover:shadow-[0_8px_40px_-12px_color-mix(in_oklab,var(--primary)_22%,transparent)]"
-                  : "border-border hover:border-primary/40 hover:shadow-[0_8px_40px_-12px_color-mix(in_oklab,var(--primary)_25%,transparent)]",
+                "hover:-translate-y-1 border-border hover:border-primary/40 hover:shadow-[0_8px_40px_-12px_color-mix(in_oklab,var(--primary)_25%,transparent)]",
                 isFeatured
                   ? "lg:col-span-6 lg:flex-row lg:items-stretch lg:gap-8 lg:p-8"
                   : "lg:col-span-2",
@@ -48,7 +43,7 @@ export function ServicesSection() {
                 {index}
               </span>
 
-              {/* Icon + Critical tag */}
+              {/* Icon */}
               <div
                 className={cn(
                   "flex items-center gap-3",
@@ -56,24 +51,10 @@ export function ServicesSection() {
                 )}
               >
                 <span
-                  className={cn(
-                    "inline-flex size-11 shrink-0 items-center justify-center rounded-md border transition-colors duration-300",
-                    isCritical
-                      ? "border-amber-500/30 bg-amber-500/10 text-amber-400 group-hover:border-amber-500/60"
-                      : "border-border bg-background/40 text-primary group-hover:border-primary/40",
-                  )}
+                  className="inline-flex size-11 shrink-0 items-center justify-center rounded-md border border-border bg-background/40 text-primary transition-colors duration-300 group-hover:border-primary/40"
                 >
                   <Icon className="size-5" />
                 </span>
-                {isCritical && (
-                  <span className="inline-flex items-center gap-1.5 rounded-md border border-amber-500/30 bg-amber-500/10 px-2 py-1 font-mono text-[0.6rem] uppercase tracking-[0.18em] text-amber-400/90">
-                    <span
-                      aria-hidden
-                      className="inline-block size-1 rounded-full bg-amber-400 pulse-dot"
-                    />
-                    Critical
-                  </span>
-                )}
               </div>
 
               {/* Content */}
@@ -83,14 +64,9 @@ export function ServicesSection() {
                   isFeatured && "lg:mt-0 lg:flex-1 lg:gap-4",
                 )}
               >
-                <div className="flex flex-col gap-1.5">
-                  <h3 className="font-sans text-lg font-semibold tracking-tight text-balance">
-                    {service.name}
-                  </h3>
-                  <p className="text-sm font-medium text-primary/90 text-pretty">
-                    {service.tagline}
-                  </p>
-                </div>
+                <h3 className="font-sans text-lg font-semibold tracking-tight text-balance">
+                  {service.name}
+                </h3>
                 <p
                   className={cn(
                     "text-sm text-muted-foreground text-pretty",

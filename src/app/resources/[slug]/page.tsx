@@ -113,7 +113,7 @@ export default async function ResourcePage({
                 {resource.readTime}
               </span>
             </div>
-            <h1 className="mt-5 font-sans text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+            <h1 className="mt-5 font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
               {resource.title}
             </h1>
             <p className="mt-5 max-w-2xl text-base text-muted-foreground text-pretty sm:text-lg">
@@ -138,7 +138,7 @@ export default async function ResourcePage({
                         In progress
                       </span>
                     </div>
-                    <h2 className="mt-3 font-sans text-xl font-semibold tracking-tight">
+                    <h2 className="mt-3 font-display text-xl font-semibold tracking-tight">
                       This article is being written.
                     </h2>
                     <p className="mt-3 text-sm text-muted-foreground text-pretty sm:text-base">
@@ -215,7 +215,7 @@ export default async function ResourcePage({
                     <PencilLine className="size-4 text-primary" aria-hidden />
                     <span className="text-mono-label text-primary">Subscribe</span>
                   </div>
-                  <h2 className="mt-4 font-sans text-2xl font-semibold tracking-tight sm:text-3xl">
+                  <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
                     Want this note in your inbox when it ships?
                   </h2>
                   <p className="mt-3 text-sm text-muted-foreground text-pretty sm:text-base">

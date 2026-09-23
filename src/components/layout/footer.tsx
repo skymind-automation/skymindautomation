@@ -26,7 +26,7 @@ export function Footer() {
       className="relative mt-auto border-t border-border bg-background/40"
       aria-labelledby="footer-heading"
     >
-      <h2 id="footer-heading" className="sr-only">
+      <h2 id="footer-heading" className="font-display sr-only">
         Footer
       </h2>
 
@@ -144,13 +144,7 @@ export function Footer() {
               </a>
             ))}
           </div>
-        ) : (
-          <div className="flex items-center gap-2 border-t border-border py-6">
-            <span className="text-mono-label text-muted-foreground/70">
-              Social links coming soon
-            </span>
-          </div>
-        )}
+        ) : null}
 
         {/* Bottom bar */}
         <div className="flex flex-col items-start justify-between gap-4 border-t border-border py-6 sm:flex-row sm:items-center">
@@ -171,16 +165,6 @@ export function Footer() {
             >
               Terms
             </Link>
-            <span
-              className="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground"
-              aria-label="System status: operational"
-            >
-              <span className="relative inline-flex size-1.5">
-                <span className="absolute inline-flex size-full rounded-full bg-primary/60 pulse-dot" />
-                <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
-              </span>
-              system status: operational
-            </span>
           </div>
         </div>
       </Container>

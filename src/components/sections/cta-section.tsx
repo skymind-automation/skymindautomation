@@ -31,7 +31,7 @@ export function CTASection() {
 
           <h2
             id="cta-heading"
-            className="mt-6 font-sans text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
+            className="mt-6 font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
           >
             Start an AI project.
           </h2>

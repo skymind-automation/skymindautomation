@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Info, FolderOpen } from "lucide-react";
+import { ArrowRight, FolderOpen } from "lucide-react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
 import { MonoLabel } from "@/components/shared/mono-label";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { caseStudies } from "@/content/case-studies";
 
 export const metadata: Metadata = {
-  title: "Work — Example Solutions We Architect",
+  title: "Work",
   description:
-    "Illustrative example solutions SkyMind Automation designs — RAG knowledge platforms, support automation, AI red teaming, and document intelligence. Not real client engagements.",
+    "Systems SkyMind Automation has built, from retrieval backends to automation, with the engineering decisions behind each one.",
   alternates: { canonical: "/work" },
 };
 
@@ -26,24 +25,13 @@ export default function WorkPage() {
         <Section withGrid className="pt-28 sm:pt-32 lg:pt-40">
           <Container className="max-w-4xl">
             <MonoLabel>Work</MonoLabel>
-            <h1 className="mt-5 font-sans text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-              Example solutions we architect
+            <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+              Selected work
             </h1>
             <p className="mt-6 max-w-2xl text-base text-muted-foreground text-pretty sm:text-lg">
-              A set of representative engagements that show how we frame problems, design
-              systems, and engineer them for production. They are written to communicate approach,
-              not to impress with logos.
+              Systems we have built, written up with the problem, the engineering decisions that
+              shaped them, and what they verifiably do. We name a client only with their permission.
             </p>
-
-            <Alert className="mt-8 border-amber-500/30 bg-amber-500/5 text-amber-100">
-              <Info className="text-amber-400" aria-hidden />
-              <AlertTitle className="text-amber-200">Example solutions, not client logos</AlertTitle>
-              <AlertDescription className="text-amber-100/80">
-                These are illustrative example solutions showing our approach. They are not real
-                client engagements. Every system below is labeled as an{" "}
-                <span className="font-mono">Example Solution</span> for clarity.
-              </AlertDescription>
-            </Alert>
           </Container>
         </Section>
 
@@ -60,16 +48,10 @@ export default function WorkPage() {
                       <Badge variant="outline" className="font-mono text-xs">
                         {cs.tag}
                       </Badge>
-                      <Badge
-                        variant="outline"
-                        className="border-amber-500/30 bg-amber-500/10 font-mono text-xs text-amber-300"
-                      >
-                        Example Solution
-                      </Badge>
                     </div>
 
                     <div>
-                      <h2 className="font-sans text-xl font-semibold tracking-tight text-balance sm:text-2xl">
+                      <h2 className="font-display text-xl font-semibold tracking-tight text-balance sm:text-2xl">
                         {cs.title}
                       </h2>
                       <p className="mt-2 font-mono text-xs text-muted-foreground">
@@ -125,13 +107,12 @@ export default function WorkPage() {
                     <FolderOpen className="size-4 text-primary" aria-hidden />
                     <span className="text-mono-label text-primary">Engagement</span>
                   </div>
-                  <h2 className="mt-4 font-sans text-2xl font-semibold tracking-tight sm:text-3xl">
-                    Want a system like one of these?
+                  <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                    Have a problem like this?
                   </h2>
                   <p className="mt-3 text-sm text-muted-foreground text-pretty sm:text-base">
-                    Each example above is shaped around a real class of problem. If you recognize
-                    your situation in one of them, send us a note — we can scope a similar
-                    engagement around your data and your systems.
+                    Send us a note about what you are trying to solve. We will scope an engagement
+                    around your data and your systems.
                   </p>
                 </div>
                 <Link

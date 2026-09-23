@@ -62,7 +62,7 @@ export default function SolutionsPage() {
         <Section withGrid className="pt-28 sm:pt-32 lg:pt-40">
           <Container className="max-w-4xl">
             <MonoLabel>Solutions</MonoLabel>
-            <h1 className="mt-5 font-sans text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
               AI systems we design and ship
             </h1>
             <p className="mt-6 max-w-2xl text-base text-muted-foreground text-pretty sm:text-lg">
@@ -95,7 +95,7 @@ export default function SolutionsPage() {
                 <span className="text-mono-label text-muted-foreground">
                   Cluster 0{idx + 1}
                 </span>
-                <h2 className="font-sans text-2xl font-semibold tracking-tight sm:text-3xl">
+                <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
                   {cluster.title}
                 </h2>
                 <p className="max-w-2xl text-sm text-muted-foreground text-pretty sm:text-base">
@@ -195,7 +195,7 @@ export default function SolutionsPage() {
                     <ShieldCheck className="size-4 text-primary" aria-hidden />
                     <span className="text-mono-label text-primary">Engagement</span>
                   </div>
-                  <h2 className="mt-4 font-sans text-2xl font-semibold tracking-tight sm:text-3xl">
+                  <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
                     Have a system in mind?
                   </h2>
                   <p className="mt-3 text-sm text-muted-foreground text-pretty sm:text-base">

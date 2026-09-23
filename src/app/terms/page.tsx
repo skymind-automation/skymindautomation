@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/terms" },
 };
 
-const lastUpdated = "Last updated: September 2025";
+const lastUpdated = "Last updated: September 2026";
 
 const sections: { id: string; number: string; title: string; body: ReactNode }[] = [
   {
@@ -211,7 +211,7 @@ export default function TermsPage() {
         <Section withGrid className="pt-28 sm:pt-32 lg:pt-40">
           <Container className="max-w-4xl">
             <MonoLabel>Terms</MonoLabel>
-            <h1 className="mt-5 font-sans text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
               Terms of use
             </h1>
             <p className="mt-6 max-w-2xl text-base text-muted-foreground text-pretty sm:text-lg">
@@ -230,7 +230,7 @@ export default function TermsPage() {
                 <section key={s.id} id={s.id} className="scroll-mt-28">
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-xs text-primary">{s.number}</span>
-                    <h2 className="font-sans text-2xl font-semibold tracking-tight">
+                    <h2 className="font-display text-2xl font-semibold tracking-tight">
                       {s.title}
                     </h2>
                   </div>
@@ -258,7 +258,7 @@ export default function TermsPage() {
                     <ScrollText className="size-4 text-primary" aria-hidden />
                     <span className="text-mono-label text-primary">Questions</span>
                   </div>
-                  <h2 className="mt-4 font-sans text-2xl font-semibold tracking-tight sm:text-3xl">
+                  <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
                     Questions about these terms?
                   </h2>
                   <p className="mt-3 text-sm text-muted-foreground text-pretty sm:text-base">

@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { ArrowRight, Info } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Section } from "@/components/shared/section";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { ArrowLink } from "@/components/shared/arrow-link";
@@ -12,8 +12,8 @@ export function CaseStudiesSection() {
     <Section withGrid gridFade>
       <SectionHeading
         eyebrow="Work"
-        title="Example solutions we architect"
-        description="Illustrative systems showing how we frame, build, and secure AI. (Example Solution labels mark illustrative content.)"
+        title="Selected work"
+        description="Systems we have built, written up with the engineering decisions that shaped them."
       />
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:gap-6">
@@ -35,15 +35,6 @@ export function CaseStudiesSection() {
                 <span className="inline-flex items-center gap-1.5 rounded-md border border-border bg-background/40 px-2.5 py-1 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-muted-foreground">
                   {cs.tag}
                 </span>
-                {cs.illustrative && (
-                  <span
-                    title="Illustrative example — not a real client engagement"
-                    className="inline-flex items-center gap-1.5 rounded-md border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-amber-400"
-                  >
-                    <Info className="size-3" />
-                    Example Solution
-                  </span>
-                )}
               </div>
 
               {/* title + client */}

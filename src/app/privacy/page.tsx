@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacy" },
 };
 
-const lastUpdated = "Last updated: September 2025";
+const lastUpdated = "Last updated: September 2026";
 
 const toc: { id: string; label: string }[] = [
   { id: "what-we-collect", label: "What we collect" },
@@ -38,7 +38,7 @@ export default function PrivacyPage() {
         <Section withGrid className="pt-28 sm:pt-32 lg:pt-40">
           <Container className="max-w-4xl">
             <MonoLabel>Privacy</MonoLabel>
-            <h1 className="mt-5 font-sans text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
               Privacy policy
             </h1>
             <p className="mt-6 max-w-2xl text-base text-muted-foreground text-pretty sm:text-lg">
@@ -106,7 +106,7 @@ export default function PrivacyPage() {
                 <section id="what-we-collect" className="scroll-mt-28">
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-xs text-primary">01</span>
-                    <h2 className="font-sans text-2xl font-semibold tracking-tight">
+                    <h2 className="font-display text-2xl font-semibold tracking-tight">
                       What we collect
                     </h2>
                   </div>
@@ -144,7 +144,7 @@ export default function PrivacyPage() {
                 <section id="why" className="scroll-mt-28">
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-xs text-primary">02</span>
-                    <h2 className="font-sans text-2xl font-semibold tracking-tight">
+                    <h2 className="font-display text-2xl font-semibold tracking-tight">
                       Why we collect it
                     </h2>
                   </div>
@@ -166,7 +166,7 @@ export default function PrivacyPage() {
                 <section id="how-we-store" className="scroll-mt-28">
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-xs text-primary">03</span>
-                    <h2 className="font-sans text-2xl font-semibold tracking-tight">
+                    <h2 className="font-display text-2xl font-semibold tracking-tight">
                       How we store it
                     </h2>
                   </div>
@@ -193,7 +193,7 @@ export default function PrivacyPage() {
                 <section id="your-rights" className="scroll-mt-28">
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-xs text-primary">04</span>
-                    <h2 className="font-sans text-2xl font-semibold tracking-tight">
+                    <h2 className="font-display text-2xl font-semibold tracking-tight">
                       Your rights
                     </h2>
                   </div>
@@ -231,7 +231,7 @@ export default function PrivacyPage() {
                 <section id="cookies" className="scroll-mt-28">
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-xs text-primary">05</span>
-                    <h2 className="font-sans text-2xl font-semibold tracking-tight">
+                    <h2 className="font-display text-2xl font-semibold tracking-tight">
                       Cookies
                     </h2>
                   </div>
@@ -253,7 +253,7 @@ export default function PrivacyPage() {
                 <section id="security" className="scroll-mt-28">
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-xs text-primary">06</span>
-                    <h2 className="font-sans text-2xl font-semibold tracking-tight">
+                    <h2 className="font-display text-2xl font-semibold tracking-tight">
                       Security
                     </h2>
                   </div>
@@ -298,7 +298,7 @@ export default function PrivacyPage() {
                 <section id="third-parties" className="scroll-mt-28">
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-xs text-primary">07</span>
-                    <h2 className="font-sans text-2xl font-semibold tracking-tight">
+                    <h2 className="font-display text-2xl font-semibold tracking-tight">
                       Third parties
                     </h2>
                   </div>
@@ -308,11 +308,11 @@ export default function PrivacyPage() {
                       their own marketing or analytics.
                     </p>
                     <p>
-                      We may use infrastructure providers (for hosting, email delivery, and
-                      similar) to operate the website and respond to your inquiry. These
-                      providers process data only on our instructions and under their own
-                      privacy obligations. We will tell you which providers are involved when we
-                      respond to your inquiry.
+                      Two infrastructure providers process your submission on our behalf:
+                      Cloudflare, which hosts this website and the database your inquiry is
+                      stored in, and Resend, which delivers the email that notifies us of your
+                      inquiry and so receives its contents. Both process data only on our
+                      instructions and under their own privacy obligations.
                     </p>
                   </div>
                 </section>
@@ -321,7 +321,7 @@ export default function PrivacyPage() {
                 <section id="contact" className="scroll-mt-28">
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-xs text-primary">08</span>
-                    <h2 className="font-sans text-2xl font-semibold tracking-tight">
+                    <h2 className="font-display text-2xl font-semibold tracking-tight">
                       Contact
                     </h2>
                   </div>
@@ -380,7 +380,7 @@ export default function PrivacyPage() {
                     <ShieldCheck className="size-4 text-primary" aria-hidden />
                     <span className="text-mono-label text-primary">Privacy</span>
                   </div>
-                  <h2 className="mt-4 font-sans text-2xl font-semibold tracking-tight sm:text-3xl">
+                  <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
                     Questions about your data?
                   </h2>
                   <p className="mt-3 text-sm text-muted-foreground text-pretty sm:text-base">

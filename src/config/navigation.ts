@@ -174,11 +174,9 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
       { title: "All Solutions", href: "/solutions" },
       { title: "Industries", href: "/industries" },
       { title: "Work", href: "/work" },
-      {
-        title: "BuiltWithAI",
-        href: siteConfig.builtWithAI.url,
-        external: true,
-      },
+      ...(siteConfig.builtWithAI.url
+        ? [{ title: "BuiltWithAI", href: siteConfig.builtWithAI.url, external: true }]
+        : []),
     ],
   },
 ];

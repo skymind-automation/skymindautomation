@@ -73,7 +73,7 @@ export default function ServicesPage() {
         >
           <div className="flex flex-col gap-6">
             <MonoLabel>Capabilities</MonoLabel>
-            <h1 className="font-sans text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <h1 className="font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
               Services
             </h1>
             <p className="max-w-2xl text-base text-muted-foreground text-pretty sm:text-lg">
@@ -208,7 +208,7 @@ export default function ServicesPage() {
           <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
             <div className="flex max-w-md flex-col gap-4">
               <MonoLabel>Engagement</MonoLabel>
-              <h2 className="font-sans text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+              <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
                 How we engage
               </h2>
               <p className="text-base text-muted-foreground text-pretty">
@@ -263,7 +263,7 @@ export default function ServicesPage() {
               <div className="relative flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex flex-col gap-3">
                   <MonoLabel>Need help scoping?</MonoLabel>
-                  <h2 className="font-sans text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
+                  <h2 className="font-display text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
                     Not sure which service you need? Talk to us.
                   </h2>
                   <p className="max-w-xl text-sm text-muted-foreground text-pretty sm:text-base">

@@ -15,7 +15,6 @@ import { Footer } from "@/components/layout/footer";
 import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
 import { MonoLabel } from "@/components/shared/mono-label";
-import { TeamSection } from "@/components/sections/team-section";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -110,12 +109,12 @@ const whatWeDontDo: { title: string; description: string }[] = [
   {
     title: "No client name-dropping",
     description:
-      "We do not trade on logos. Our case studies are illustrative examples of our approach, not client references.",
+      "We do not trade on logos. We name a client only with their permission, and describe the work as it was actually built.",
   },
   {
     title: "No fabricated case studies",
     description:
-      "Every example we publish is labeled as an illustrative example. We do not invent metrics, clients, or outcomes.",
+      "Every case study describes work we did. We do not invent metrics, clients, or outcomes, and we do not claim results a system has not yet earned.",
   },
 ];
 
@@ -128,7 +127,7 @@ export default function AboutPage() {
         <Section withGrid className="pt-28 sm:pt-32 lg:pt-40">
           <Container className="max-w-4xl">
             <MonoLabel>About</MonoLabel>
-            <h1 className="mt-5 font-sans text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
               SkyMind Automation
             </h1>
             <p className="mt-6 max-w-2xl text-base text-muted-foreground text-pretty sm:text-lg">
@@ -151,7 +150,7 @@ export default function AboutPage() {
                   <Target className="size-4 text-primary" aria-hidden />
                   <span className="text-mono-label text-primary">Mission</span>
                 </div>
-                <h2 className="mt-3 font-sans text-2xl font-semibold tracking-tight">
+                <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight">
                   Why we exist
                 </h2>
               </div>
@@ -186,7 +185,7 @@ export default function AboutPage() {
                   <Eye className="size-4 text-primary" aria-hidden />
                   <span className="text-mono-label text-primary">Vision</span>
                 </div>
-                <h2 className="mt-3 font-sans text-2xl font-semibold tracking-tight">
+                <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight">
                   Where we are going
                 </h2>
               </div>
@@ -221,7 +220,7 @@ export default function AboutPage() {
                   <Compass className="size-4 text-primary" aria-hidden />
                   <span className="text-mono-label text-primary">Approach</span>
                 </div>
-                <h2 className="mt-3 font-sans text-2xl font-semibold tracking-tight">
+                <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight">
                   Engineering-first
                 </h2>
               </div>
@@ -286,7 +285,7 @@ export default function AboutPage() {
                   <GitBranch className="size-4 text-primary" aria-hidden />
                   <span className="text-mono-label text-primary">Engineering</span>
                 </div>
-                <h2 className="mt-3 font-sans text-2xl font-semibold tracking-tight">
+                <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight">
                   Engineering philosophy
                 </h2>
               </div>
@@ -329,7 +328,7 @@ export default function AboutPage() {
                   <ShieldCheck className="size-4 text-primary" aria-hidden />
                   <span className="text-mono-label text-primary">Security</span>
                 </div>
-                <h2 className="mt-3 font-sans text-2xl font-semibold tracking-tight">
+                <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight">
                   Security philosophy
                 </h2>
               </div>
@@ -371,7 +370,7 @@ export default function AboutPage() {
                   <Ban className="size-4 text-primary" aria-hidden />
                   <span className="text-mono-label text-primary">Honesty</span>
                 </div>
-                <h2 className="mt-3 font-sans text-2xl font-semibold tracking-tight">
+                <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight">
                   What we don&apos;t do
                 </h2>
               </div>
@@ -402,9 +401,6 @@ export default function AboutPage() {
           </Container>
         </Section>
 
-        {/* Founding team */}
-        <TeamSection />
-
         {/* Bottom CTA */}
         <Section className="pt-0">
           <Container>
@@ -416,7 +412,7 @@ export default function AboutPage() {
                     <Compass className="size-4 text-primary" aria-hidden />
                     <span className="text-mono-label text-primary">Engagement</span>
                   </div>
-                  <h2 className="mt-4 font-sans text-2xl font-semibold tracking-tight sm:text-3xl">
+                  <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
                     Build AI that earns its place in production
                   </h2>
                   <p className="mt-3 text-sm text-muted-foreground text-pretty sm:text-base">

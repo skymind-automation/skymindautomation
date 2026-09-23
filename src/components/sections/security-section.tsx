@@ -108,7 +108,7 @@ export function SecuritySection() {
         {/* Heading block */}
         <div className="flex flex-col gap-5">
           <MonoLabel>Differentiator</MonoLabel>
-          <h2 className="font-sans text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
             Don&apos;t just deploy AI.{" "}
             <span className="text-amber-400 text-glow">Attack it first.</span>
           </h2>
@@ -123,7 +123,6 @@ export function SecuritySection() {
         <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:gap-4">
           {securityAttackSurface.map((item, idx) => {
             const Icon = attackIconMap[idx] ?? AlertTriangle;
-            const threatId = `THREAT-${String(idx + 1).padStart(2, "0")}`;
             return (
               <article
                 key={item.title}
@@ -139,14 +138,9 @@ export function SecuritySection() {
 
                 {/* Content */}
                 <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-                  <div className="flex items-center justify-between gap-2">
-                    <h3 className="font-mono text-[0.78rem] uppercase tracking-[0.12em] text-foreground">
-                      {item.title}
-                    </h3>
-                    <span className="hidden font-mono text-[0.58rem] uppercase tracking-[0.18em] text-muted-foreground/60 sm:inline">
-                      {threatId}
-                    </span>
-                  </div>
+                  <h3 className="font-mono text-[0.78rem] uppercase tracking-[0.12em] text-foreground">
+                    {item.title}
+                  </h3>
                   <p className="text-xs leading-relaxed text-muted-foreground text-pretty sm:text-sm">
                     {item.description}
                   </p>

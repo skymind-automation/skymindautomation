@@ -30,7 +30,7 @@ export function SectionHeading({
       {eyebrow && <MonoLabel withDot={withDot}>{eyebrow}</MonoLabel>}
       <h2
         className={cn(
-          "font-sans text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl",
+          "font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl",
           "text-balance",
           align === "center" && "mx-auto max-w-3xl",
         )}

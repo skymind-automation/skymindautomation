@@ -56,7 +56,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           <Container className="relative py-16 sm:py-20 lg:py-28">
             <div className="max-w-3xl space-y-5">
               <MonoLabel>Contact</MonoLabel>
-              <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+              <h1 className="font-display text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
                 Start an AI project.
               </h1>
               <p className="max-w-2xl text-pretty text-lg text-muted-foreground">

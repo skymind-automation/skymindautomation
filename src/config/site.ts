@@ -5,7 +5,8 @@ export const siteConfig = {
   shortName: "SkyMind",
   description:
     "SkyMind Automation designs and builds AI systems, intelligent workflows, RAG applications, agents, and AI security solutions for organizations ready to put AI to work.",
-  tagline: "Build AI. Automate Work. Secure Intelligence.",
+  // Matches the tagline in the logo lockup artwork.
+  tagline: "Build. Automate. Evaluate. Secure.",
   supportingStatement:
     "We build, integrate, automate, evaluate, and secure AI systems for businesses.",
   positioning:
@@ -16,8 +17,9 @@ export const siteConfig = {
     name: "BuiltWithAI",
     description:
       "BuiltWithAI is the public showcase and discovery platform for software, agents, automations, tools and projects built with AI.",
-    // Configured later — placeholder until confirmed. Use env if available.
-    url: process.env.NEXT_PUBLIC_BUILTWITHAI_URL || "https://builtwithai.dev",
+    // Only linked once NEXT_PUBLIC_BUILTWITHAI_URL is set: the old fallback,
+    // builtwithai.dev, was an unconfirmed placeholder that may not be ours.
+    url: process.env.NEXT_PUBLIC_BUILTWITHAI_URL || null,
   },
   social: {
     // Only populated when real URLs are confirmed.
