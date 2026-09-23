@@ -285,9 +285,9 @@ export default function ServicesPage() {
                     size="lg"
                     className="h-12 px-6 text-base"
                   >
-                    <Link href="/resources">
+                    <Link href="/faq">
                       <Search className="size-4" />
-                      Browse resources
+                      Read the FAQ
                     </Link>
                   </Button>
                 </div>

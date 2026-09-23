@@ -86,8 +86,8 @@ export const mainNav: NavGroup[] = [
     href: "/about",
   },
   {
-    title: "Resources",
-    href: "/resources",
+    title: "FAQ",
+    href: "/faq",
   },
   {
     title: "Contact",
@@ -163,7 +163,7 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
     items: [
       { title: "About", href: "/about" },
       { title: "Contact", href: "/contact" },
-      { title: "Resources", href: "/resources" },
+      { title: "FAQ", href: "/faq" },
       { title: "Privacy", href: "/privacy" },
       { title: "Terms", href: "/terms" },
     ],

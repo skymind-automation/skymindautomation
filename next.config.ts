@@ -35,6 +35,13 @@ const nextConfig: NextConfig = {
   output: "standalone",
   reactStrictMode: true,
   poweredByHeader: false,
+  // The resources hub listed articles that were never written; its FAQ moved to /faq.
+  async redirects() {
+    return [
+      { source: "/resources", destination: "/faq", permanent: true },
+      { source: "/resources/:slug", destination: "/faq", permanent: true },
+    ];
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
